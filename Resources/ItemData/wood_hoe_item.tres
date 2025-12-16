@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b4baqmd1qcnar"]
+
+[ext_resource type="Script" uid="uid://bbeidvvc27fi0" path="res://Scripts/Resources/item_data.gd" id="1_si813"]
+[ext_resource type="Texture2D" uid="uid://cdncg4jxnmqij" path="res://Assets/Sprites/Items/items.png" id="2_wa63v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqe30"]
+atlas = ExtResource("2_wa63v")
+region = Rect2(32, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_si813")
+uid = "WOOD_HOE"
+sprite = SubResource("AtlasTexture_tqe30")
+stack = 1
+metadata/_custom_type_script = "uid://bbeidvvc27fi0"

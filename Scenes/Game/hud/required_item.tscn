@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcv25pxhsqnq5"]
+
+[ext_resource type="Texture2D" uid="uid://dtqbcv8bt6ny4" path="res://Assets/Sprites/Tilesets/craft_table.png" id="1_6wva0"]
+[ext_resource type="Script" uid="uid://xutw4ic78wbb" path="res://Scripts/Game/Hud/required_item.gd" id="1_measa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_measa"]
+
+[node name="RequiredItem" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_measa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Item" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_6wva0")
+stretch_mode = 5
+
+[node name="Quantity" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "3"
+label_settings = SubResource("LabelSettings_measa")
+horizontal_alignment = 1
+vertical_alignment = 1

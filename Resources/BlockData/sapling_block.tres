@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=9 format=3 uid="uid://dakdkc76jbagb"]
+
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="1_f6psi"]
+[ext_resource type="Texture2D" uid="uid://dtbgk2iuihjwi" path="res://Assets/Sprites/Tilesets/tree.png" id="1_vdk0h"]
+[ext_resource type="Script" uid="uid://dfrvwi24thkjt" path="res://Scripts/Resources/simple_block_display.gd" id="1_w00nj"]
+[ext_resource type="Resource" uid="uid://c6xppvt5aqovv" path="res://Resources/ItemData/tree_seed_item.tres" id="2_vdk0h"]
+[ext_resource type="Script" uid="uid://xyx8b4duvref" path="res://Scripts/Resources/DropData/single_drop_data.gd" id="3_0hrup"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hrup"]
+atlas = ExtResource("1_vdk0h")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="Resource" id="Resource_6rc43"]
+script = ExtResource("1_w00nj")
+atlas = SubResource("AtlasTexture_0hrup")
+occluder = false
+collider = Vector4i(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[sub_resource type="Resource" id="Resource_jhy60"]
+script = ExtResource("3_0hrup")
+item = ExtResource("2_vdk0h")
+metadata/_custom_type_script = "uid://xyx8b4duvref"
+
+[resource]
+script = ExtResource("1_f6psi")
+uid = "SAPLING"
+display = SubResource("Resource_6rc43")
+drop = SubResource("Resource_jhy60")
+block_state_id = "SAPLING"
+break_sound_id = "BREAK_LEAVES"
+resistance = 0.5
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

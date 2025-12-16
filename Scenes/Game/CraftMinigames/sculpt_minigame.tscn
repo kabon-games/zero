@@ -1,0 +1,212 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbvc355xfx5gu"]
+
+[ext_resource type="Texture2D" uid="uid://3etnf8qqae00" path="res://Assets/Sprites/hud/CraftMinigames/SculptMinigame/background.png" id="1_dy4f8"]
+[ext_resource type="Script" uid="uid://cdvdsuv6eflbi" path="res://Scripts/Game/CraftMinigames/SculptMinigame.gd" id="1_r2rmv"]
+[ext_resource type="Texture2D" uid="uid://cxlmo7h42w3tf" path="res://Assets/Sprites/hud/CraftMinigames/SculptMinigame/foreground.png" id="2_ejso1"]
+[ext_resource type="Texture2D" uid="uid://ces7c6cgd072r" path="res://Assets/Sprites/hud/CraftMinigames/SculptMinigame/block.png" id="2_r2rmv"]
+[ext_resource type="Shader" uid="uid://0w3y1cx5tu8n" path="res://Resources/Shaders/select.gdshader" id="3_c1uw4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vg27"]
+shader = ExtResource("3_c1uw4")
+shader_parameter/active = true
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 0.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1uw4"]
+shader = ExtResource("3_c1uw4")
+shader_parameter/active = false
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+
+[node name="SculptMinigame" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_r2rmv")
+
+[node name="Background" type="Sprite2D" parent="."]
+clip_children = 2
+texture = ExtResource("1_dy4f8")
+
+[node name="Blocks" type="Node2D" parent="Background"]
+
+[node name="Block" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_7vg27")
+position = Vector2(-30, -30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block2" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-18, -30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block3" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-6, -30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block4" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(6, -30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block5" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(18, -30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block6" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(30, -30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block7" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-30, -18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block8" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-18, -18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block9" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-6, -18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block10" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(6, -18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block11" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(18, -18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block12" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(30, -18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block13" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-30, -6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block14" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-18, -6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block15" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-6, -6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block16" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(6, -6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block17" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(18, -6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block18" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(30, -6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block19" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-30, 6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block20" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-18, 6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block21" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-6, 6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block22" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(6, 6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block23" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(18, 6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block24" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(30, 6)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block25" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-30, 18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block26" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-18, 18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block27" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-6, 18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block28" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(6, 18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block29" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(18, 18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block30" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(30, 18)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block31" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-30, 30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block32" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-18, 30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block33" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(-6, 30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block34" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(6, 30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block35" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(18, 30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Block36" type="Sprite2D" parent="Background/Blocks"]
+material = SubResource("ShaderMaterial_c1uw4")
+position = Vector2(30, 30)
+texture = ExtResource("2_r2rmv")
+
+[node name="Foreground" type="Sprite2D" parent="Background"]
+texture = ExtResource("2_ejso1")

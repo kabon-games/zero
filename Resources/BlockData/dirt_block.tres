@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=8 format=3 uid="uid://dsmeinuh7uuch"]
+
+[ext_resource type="Script" uid="uid://d4gb06k5rk062" path="res://Scripts/Resources/aglomerate_block_display.gd" id="1_hk0mk"]
+[ext_resource type="Texture2D" uid="uid://t7xh0yn6k8hq" path="res://Assets/Sprites/Tilesets/dirt.png" id="1_prvyq"]
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="1_tsjeu"]
+[ext_resource type="Resource" uid="uid://b40rpiumsh5gg" path="res://Resources/ItemData/dirt_item.tres" id="2_lkosm"]
+[ext_resource type="Script" uid="uid://xyx8b4duvref" path="res://Scripts/Resources/DropData/single_drop_data.gd" id="3_drwx4"]
+
+[sub_resource type="Resource" id="Resource_hk0mk"]
+script = ExtResource("1_hk0mk")
+atlas = ExtResource("1_prvyq")
+metadata/_custom_type_script = "uid://d4gb06k5rk062"
+
+[sub_resource type="Resource" id="Resource_prvyq"]
+script = ExtResource("3_drwx4")
+item = ExtResource("2_lkosm")
+metadata/_custom_type_script = "uid://xyx8b4duvref"
+
+[resource]
+script = ExtResource("1_tsjeu")
+uid = "DIRT"
+display = SubResource("Resource_hk0mk")
+drop = SubResource("Resource_prvyq")
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

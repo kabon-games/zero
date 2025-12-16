@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PickaxeItemData" load_steps=4 format=3 uid="uid://dg6ycxp5w7a8x"]
+
+[ext_resource type="Script" uid="uid://bynspm752u4nr" path="res://Scripts/Resources/ItemData/axe_item_data.gd" id="1_ebp43"]
+[ext_resource type="Texture2D" uid="uid://cdncg4jxnmqij" path="res://Assets/Sprites/Items/items.png" id="2_ilje7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqe30"]
+atlas = ExtResource("2_ilje7")
+region = Rect2(32, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_ebp43")
+uid = "WOOD_AXE"
+sprite = SubResource("AtlasTexture_tqe30")
+stack = 1
+metadata/_custom_type_script = "uid://bbeidvvc27fi0"

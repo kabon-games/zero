@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=14 format=3 uid="uid://rfr1cwnkcu63"]
+
+[ext_resource type="Script" uid="uid://dfrvwi24thkjt" path="res://Scripts/Resources/simple_block_display.gd" id="1_cwk7f"]
+[ext_resource type="Script" uid="uid://c5mvnua17bsxo" path="res://Scripts/Resources/block_display.gd" id="1_u2aqm"]
+[ext_resource type="Resource" uid="uid://dewugrtdgqy40" path="res://Resources/ItemData/wood_door_item.tres" id="2_cwk7f"]
+[ext_resource type="Texture2D" uid="uid://do180vek2xkrq" path="res://Assets/Sprites/Tilesets/wood_door.png" id="2_s0jqf"]
+[ext_resource type="Script" uid="uid://dhl1ay5m5hsvp" path="res://Scripts/Resources/state_block_display.gd" id="3_s0jqf"]
+[ext_resource type="Script" uid="uid://xyx8b4duvref" path="res://Scripts/Resources/DropData/single_drop_data.gd" id="3_u2aqm"]
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="4_s0jqf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuyyh"]
+atlas = ExtResource("2_s0jqf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_vuyyh"]
+script = ExtResource("1_cwk7f")
+atlas = SubResource("AtlasTexture_vuyyh")
+collider = Vector4i(0, 0, 4, 16)
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0jqf"]
+atlas = ExtResource("2_s0jqf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_j3viw"]
+script = ExtResource("1_cwk7f")
+atlas = SubResource("AtlasTexture_s0jqf")
+collider = Vector4i(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[sub_resource type="Resource" id="Resource_2gewg"]
+script = ExtResource("3_s0jqf")
+displays = Array[ExtResource("1_u2aqm")]([SubResource("Resource_vuyyh"), SubResource("Resource_j3viw")])
+metadata/_custom_type_script = "uid://dhl1ay5m5hsvp"
+
+[sub_resource type="Resource" id="Resource_prvyq"]
+script = ExtResource("3_u2aqm")
+item = ExtResource("2_cwk7f")
+metadata/_custom_type_script = "uid://xyx8b4duvref"
+
+[resource]
+script = ExtResource("4_s0jqf")
+uid = "WOOD_DOOR"
+display = SubResource("Resource_2gewg")
+drop = SubResource("Resource_prvyq")
+block_state_id = "WOOD_DOOR"
+resistance = 1.5
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

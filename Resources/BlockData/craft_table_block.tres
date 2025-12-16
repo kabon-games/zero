@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=8 format=3 uid="uid://sy31wc0317hv"]
+
+[ext_resource type="Texture2D" uid="uid://dtqbcv8bt6ny4" path="res://Assets/Sprites/Tilesets/craft_table.png" id="1_bg0wp"]
+[ext_resource type="Script" uid="uid://dfrvwi24thkjt" path="res://Scripts/Resources/simple_block_display.gd" id="1_s4svc"]
+[ext_resource type="Resource" uid="uid://cnttrcuttjhqt" path="res://Resources/ItemData/craft_table_item.tres" id="2_s4svc"]
+[ext_resource type="Script" uid="uid://xyx8b4duvref" path="res://Scripts/Resources/DropData/single_drop_data.gd" id="3_wxqo1"]
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="4_ee33s"]
+
+[sub_resource type="Resource" id="Resource_tli3g"]
+script = ExtResource("1_s4svc")
+atlas = ExtResource("1_bg0wp")
+occluder = false
+collider = Vector4i(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[sub_resource type="Resource" id="Resource_prvyq"]
+script = ExtResource("3_wxqo1")
+item = ExtResource("2_s4svc")
+metadata/_custom_type_script = "uid://xyx8b4duvref"
+
+[resource]
+script = ExtResource("4_ee33s")
+uid = "CRAFT_TABLE"
+display = SubResource("Resource_tli3g")
+drop = SubResource("Resource_prvyq")
+block_state_id = "CRAFT_TABLE"
+resistance = 1.5
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

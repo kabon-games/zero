@@ -1,0 +1,2 @@
+class_name SunLight
+extends DirectionalLight2D

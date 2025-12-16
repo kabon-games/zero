@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgkix0ji0cam6"]
+
+[ext_resource type="Script" uid="uid://b58sqwdle8wxn" path="res://Scripts/Scenes/main_menu_manager.gd" id="1_8um42"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_we838"]
+font_size = 101
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_8um42")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -325.0
+offset_right = 325.0
+offset_bottom = 167.0
+grow_horizontal = 2
+text = "Side world"
+label_settings = SubResource("LabelSettings_we838")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -181.5
+offset_top = -434.0
+offset_right = 181.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="Host button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Host"
+
+[node name="Join button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Join"
+
+[node name="quit button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Host button" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Join button" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit button" to="." method="_on_quit_button_pressed"]

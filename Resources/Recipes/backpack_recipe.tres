@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="CraftRecipe" load_steps=11 format=3 uid="uid://d3cgwcpehftbl"]
+
+[ext_resource type="Script" uid="uid://bliswmt1b5dfj" path="res://Scripts/Utils/item_stack.gd" id="1_2pf22"]
+[ext_resource type="Resource" uid="uid://c6xuuu45rddu1" path="res://Resources/ItemData/thread_item.tres" id="3_alw6f"]
+[ext_resource type="Resource" uid="uid://j0ghjdsmg18p" path="res://Resources/ItemData/backpack_item.tres" id="3_naro4"]
+[ext_resource type="Script" uid="uid://chx63enjgy4uc" path="res://Scripts/Resources/craft_recipe.gd" id="5_srgqt"]
+[ext_resource type="Script" uid="uid://dsbqg448ebulm" path="res://Scripts/Resources/craft_recipe_step.gd" id="6_rnw35"]
+[ext_resource type="Script" uid="uid://2qwd6i2epnhn" path="res://Scripts/Resources/CraftRecipeSteps/thread_craft_recipe_step.gd" id="8_j5x3a"]
+
+[sub_resource type="Resource" id="Resource_y2mru"]
+script = ExtResource("1_2pf22")
+item = ExtResource("3_alw6f")
+quantity = 10
+metadata/_custom_type_script = "uid://bliswmt1b5dfj"
+
+[sub_resource type="Resource" id="Resource_e7cfj"]
+script = ExtResource("8_j5x3a")
+metadata/_custom_type_script = "uid://2qwd6i2epnhn"
+
+[sub_resource type="Resource" id="Resource_8uxvg"]
+script = ExtResource("8_j5x3a")
+metadata/_custom_type_script = "uid://2qwd6i2epnhn"
+
+[sub_resource type="Resource" id="Resource_2pf22"]
+script = ExtResource("8_j5x3a")
+metadata/_custom_type_script = "uid://2qwd6i2epnhn"
+
+[resource]
+script = ExtResource("5_srgqt")
+uid = "BACKPACK"
+result_item = ExtResource("3_naro4")
+cost = Array[ExtResource("1_2pf22")]([SubResource("Resource_y2mru")])
+steps = Array[ExtResource("6_rnw35")]([SubResource("Resource_e7cfj"), SubResource("Resource_8uxvg"), SubResource("Resource_2pf22")])
+metadata/_custom_type_script = "uid://chx63enjgy4uc"

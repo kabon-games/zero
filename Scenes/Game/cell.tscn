@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkhmkk6xpyl2h"]
+
+[ext_resource type="Shader" uid="uid://1vlyo75g121p" path="res://Resources/Shaders/fluid.gdshader" id="2_2ciek"]
+[ext_resource type="Texture2D" uid="uid://t7xh0yn6k8hq" path="res://Assets/Sprites/Tilesets/dirt.png" id="2_fawyl"]
+[ext_resource type="Texture2D" uid="uid://33bfe4ovttii" path="res://Assets/Sprites/Tilesets/water.png" id="3_s7lkw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ciek"]
+atlas = ExtResource("2_fawyl")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yiv6v"]
+size = Vector2(16, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fuxs1"]
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[sub_resource type="Gradient" id="Gradient_fuxs1"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yiv6v"]
+gradient = SubResource("Gradient_fuxs1")
+width = 10
+height = 10
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.487)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yiv6v"]
+polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whatv"]
+shader = ExtResource("2_2ciek")
+shader_parameter/quantity = 0.0
+
+[node name="Cell" type="Sprite2D"]
+light_mask = 0
+visibility_layer = 17
+z_index = 1
+texture_filter = 1
+texture = SubResource("AtlasTexture_2ciek")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_yiv6v")
+
+[node name="occluder" type="LightOccluder2D" parent="."]
+light_mask = 32
+visibility_layer = 32
+texture_filter = 1
+occluder = SubResource("OccluderPolygon2D_fuxs1")
+occluder_light_mask = 32
+
+[node name="Break" type="Sprite2D" parent="."]
+z_index = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 32
+visibility_layer = 32
+energy = 3.0
+range_layer_min = -10
+range_layer_max = -10
+range_item_cull_mask = 32
+texture = SubResource("GradientTexture2D_yiv6v")
+
+[node name="ParticlePhysic" type="LightOccluder2D" parent="."]
+z_as_relative = false
+occluder = SubResource("OccluderPolygon2D_yiv6v")
+
+[node name="Backblock" type="Sprite2D" parent="."]
+z_index = -1
+
+[node name="Fluid" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_whatv")
+texture = ExtResource("3_s7lkw")

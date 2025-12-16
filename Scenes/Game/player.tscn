@@ -1,0 +1,122 @@
+[gd_scene load_steps=13 format=3 uid="uid://e6emgki2fd4i"]
+
+[ext_resource type="Script" uid="uid://dtvxs2l1omb4s" path="res://Scripts/Game/player.gd" id="1_xxwah"]
+[ext_resource type="Texture2D" uid="uid://b1xr5jl10j7jm" path="res://Assets/Sprites/Entities/Player/player.png" id="2_lq2ly"]
+[ext_resource type="Texture2D" uid="uid://c88dyypggutkl" path="res://Assets/Sprites/hud/cursor.png" id="3_sjqwj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjqwj"]
+atlas = ExtResource("2_lq2ly")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jfvq"]
+atlas = ExtResource("2_lq2ly")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3abv"]
+atlas = ExtResource("2_lq2ly")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi63e"]
+atlas = ExtResource("2_lq2ly")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajor6"]
+atlas = ExtResource("2_lq2ly")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssbfe"]
+atlas = ExtResource("2_lq2ly")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pet2p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjqwj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_8jfvq")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_n3abv")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_vi63e")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ajor6")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ssbfe")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lq2ly"]
+radius = 4.0
+height = 11.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sjqwj"]
+lifetime_randomness = 0.04
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4.015, 0.5, 1)
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 36.80998
+gravity = Vector3(0, -98, 0)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(0.5546038, 0.7587267, 0.9613084, 1)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+texture_filter = 1
+collision_layer = 2
+floor_max_angle = 1.0663961
+script = ExtResource("1_xxwah")
+speed = 100.0
+jump_strength = 120.0
+gravity_strength = 3.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_pet2p")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("CapsuleShape2D_lq2ly")
+
+[node name="cursor" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("3_sjqwj")
+
+[node name="PlayerArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(0, -5.5)
+shape = SubResource("CapsuleShape2D_lq2ly")
+
+[node name="WalkAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+
+[node name="HeldItem" type="Sprite2D" parent="."]
+position = Vector2(4, -5)
+scale = Vector2(0.5, 0.5)
+
+[node name="FluidParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 5
+lifetime = 0.21
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_sjqwj")

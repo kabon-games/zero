@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx28xdsf6dirg"]
+
+[ext_resource type="Script" uid="uid://cwl7o6s48ujwg" path="res://Scripts/Game/drop.gd" id="1_6ydfr"]
+[ext_resource type="Texture2D" uid="uid://cdncg4jxnmqij" path="res://Assets/Sprites/Items/items.png" id="2_f7ddq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p2m6s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ydfr"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j53p"]
+atlas = ExtResource("2_f7ddq")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Drop" type="RigidBody2D"]
+texture_filter = 1
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_p2m6s")
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_6ydfr")
+
+[node name="Rect" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6ydfr")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_3j53p")
+
+[node name="CollisionItem" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="Rect" type="CollisionShape2D" parent="CollisionItem"]
+shape = SubResource("RectangleShape2D_6ydfr")

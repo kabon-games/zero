@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PlaceableItemData" load_steps=4 format=3 uid="uid://dewugrtdgqy40"]
+
+[ext_resource type="Script" uid="uid://dskvu4e4w8mq1" path="res://Scripts/Resources/ItemData/placeable_item_data.gd" id="1_g7dgh"]
+[ext_resource type="Texture2D" uid="uid://cdncg4jxnmqij" path="res://Assets/Sprites/Items/items.png" id="2_mj532"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqe30"]
+atlas = ExtResource("2_mj532")
+region = Rect2(0, 32, 16, 16)
+
+[resource]
+script = ExtResource("1_g7dgh")
+block_id = "WOOD_DOOR"
+place_sound = "BREAK_DIRT"
+uid = "WOOD_DOOR"
+sprite = SubResource("AtlasTexture_tqe30")
+stack = 20
+metadata/_custom_type_script = "uid://bbeidvvc27fi0"

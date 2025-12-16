@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=8 format=3 uid="uid://bpuclchjkq43"]
+
+[ext_resource type="Script" uid="uid://d4gb06k5rk062" path="res://Scripts/Resources/aglomerate_block_display.gd" id="1_5x856"]
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="1_mwfjg"]
+[ext_resource type="Texture2D" uid="uid://bcacb5y3lkdjo" path="res://Assets/Sprites/Tilesets/bedrock.png" id="1_o84lk"]
+[ext_resource type="Resource" uid="uid://dxig2ehrrmtjm" path="res://Resources/ItemData/bedrock_item.tres" id="2_2216d"]
+[ext_resource type="Script" uid="uid://xyx8b4duvref" path="res://Scripts/Resources/DropData/single_drop_data.gd" id="3_imcpl"]
+
+[sub_resource type="Resource" id="Resource_5x856"]
+script = ExtResource("1_5x856")
+atlas = ExtResource("1_o84lk")
+metadata/_custom_type_script = "uid://d4gb06k5rk062"
+
+[sub_resource type="Resource" id="Resource_imcpl"]
+script = ExtResource("3_imcpl")
+item = ExtResource("2_2216d")
+metadata/_custom_type_script = "uid://xyx8b4duvref"
+
+[resource]
+script = ExtResource("1_mwfjg")
+uid = "BEDROCK"
+display = SubResource("Resource_5x856")
+break_level = 0
+drop = SubResource("Resource_imcpl")
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=6 format=3 uid="uid://dq8f0c3wjfam3"]
+
+[ext_resource type="Script" uid="uid://dfrvwi24thkjt" path="res://Scripts/Resources/simple_block_display.gd" id="1_dptsv"]
+[ext_resource type="Texture2D" uid="uid://dtbgk2iuihjwi" path="res://Assets/Sprites/Tilesets/tree.png" id="1_g8nkv"]
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="4_wiexk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dptsv"]
+atlas = ExtResource("1_g8nkv")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="Resource" id="Resource_yg0xc"]
+script = ExtResource("1_dptsv")
+atlas = SubResource("AtlasTexture_dptsv")
+occluder = false
+collider = Vector4i(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[resource]
+script = ExtResource("4_wiexk")
+uid = "TREE_TRUNK"
+display = SubResource("Resource_yg0xc")
+break_level = 0
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

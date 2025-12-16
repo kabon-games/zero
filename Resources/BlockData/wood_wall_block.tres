@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=9 format=3 uid="uid://da446vbrdlr26"]
+
+[ext_resource type="Texture2D" uid="uid://b5yaqbrgfs4i" path="res://Assets/Sprites/Tilesets/wood.png" id="1_l5buv"]
+[ext_resource type="Script" uid="uid://dfrvwi24thkjt" path="res://Scripts/Resources/simple_block_display.gd" id="1_ucwgd"]
+[ext_resource type="Resource" uid="uid://dudrxmhxyttsi" path="res://Resources/ItemData/wood_wall_item.tres" id="2_ucwgd"]
+[ext_resource type="Script" uid="uid://xyx8b4duvref" path="res://Scripts/Resources/DropData/single_drop_data.gd" id="3_t7trd"]
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="4_xnuhu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7trd"]
+atlas = ExtResource("1_l5buv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_tli3g"]
+script = ExtResource("1_ucwgd")
+atlas = SubResource("AtlasTexture_t7trd")
+occluder = false
+collider = Vector4i(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[sub_resource type="Resource" id="Resource_prvyq"]
+script = ExtResource("3_t7trd")
+item = ExtResource("2_ucwgd")
+metadata/_custom_type_script = "uid://xyx8b4duvref"
+
+[resource]
+script = ExtResource("4_xnuhu")
+uid = "WOOD_WALL"
+display = SubResource("Resource_tli3g")
+drop = SubResource("Resource_prvyq")
+resistance = 3.5
+is_background = true
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

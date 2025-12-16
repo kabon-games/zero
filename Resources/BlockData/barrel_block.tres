@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=14 format=3 uid="uid://ci8ddqgabuvri"]
+
+[ext_resource type="Script" uid="uid://c5mvnua17bsxo" path="res://Scripts/Resources/block_display.gd" id="1_ltcf2"]
+[ext_resource type="Texture2D" uid="uid://m163cjv0dflp" path="res://Assets/Sprites/Tilesets/barrel.png" id="2_n3v65"]
+[ext_resource type="Script" uid="uid://dfrvwi24thkjt" path="res://Scripts/Resources/simple_block_display.gd" id="2_odysm"]
+[ext_resource type="Script" uid="uid://xyx8b4duvref" path="res://Scripts/Resources/DropData/single_drop_data.gd" id="4_n3v65"]
+[ext_resource type="Script" uid="uid://dhl1ay5m5hsvp" path="res://Scripts/Resources/state_block_display.gd" id="4_tug3k"]
+[ext_resource type="Resource" uid="uid://bn3bfq13m8dps" path="res://Resources/ItemData/barrel_item.tres" id="5_5a0xv"]
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="5_tug3k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1thg"]
+atlas = ExtResource("2_n3v65")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_mmjke"]
+script = ExtResource("2_odysm")
+atlas = SubResource("AtlasTexture_v1thg")
+occluder = false
+collider = Vector4i(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltcf2"]
+atlas = ExtResource("2_n3v65")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_n3v65"]
+script = ExtResource("2_odysm")
+atlas = SubResource("AtlasTexture_ltcf2")
+occluder = false
+collider = Vector4i(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[sub_resource type="Resource" id="Resource_ou8m7"]
+script = ExtResource("4_tug3k")
+displays = Array[ExtResource("1_ltcf2")]([SubResource("Resource_mmjke"), SubResource("Resource_n3v65")])
+metadata/_custom_type_script = "uid://dhl1ay5m5hsvp"
+
+[sub_resource type="Resource" id="Resource_prvyq"]
+script = ExtResource("4_n3v65")
+item = ExtResource("5_5a0xv")
+metadata/_custom_type_script = "uid://xyx8b4duvref"
+
+[resource]
+script = ExtResource("5_tug3k")
+uid = "BARREL"
+display = SubResource("Resource_ou8m7")
+drop = SubResource("Resource_prvyq")
+block_state_id = "BARREL"
+resistance = 1.5
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

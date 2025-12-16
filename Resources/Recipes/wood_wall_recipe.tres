@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="CraftRecipe" load_steps=7 format=3 uid="uid://cmf52de7dj7pt"]
+
+[ext_resource type="Script" uid="uid://bliswmt1b5dfj" path="res://Scripts/Utils/item_stack.gd" id="1_211c6"]
+[ext_resource type="Resource" uid="uid://c8qembvdkdssv" path="res://Resources/ItemData/wood_item.tres" id="2_b6x6m"]
+[ext_resource type="Resource" uid="uid://dudrxmhxyttsi" path="res://Resources/ItemData/wood_wall_item.tres" id="3_211c6"]
+[ext_resource type="Script" uid="uid://chx63enjgy4uc" path="res://Scripts/Resources/craft_recipe.gd" id="4_gp6b6"]
+[ext_resource type="Script" uid="uid://dsbqg448ebulm" path="res://Scripts/Resources/craft_recipe_step.gd" id="5_q6qna"]
+
+[sub_resource type="Resource" id="Resource_w1bnp"]
+script = ExtResource("1_211c6")
+item = ExtResource("2_b6x6m")
+quantity = 1
+metadata/_custom_type_script = "uid://bliswmt1b5dfj"
+
+[resource]
+script = ExtResource("4_gp6b6")
+uid = "WOOD_WALL"
+result_item = ExtResource("3_211c6")
+cost = Array[ExtResource("1_211c6")]([SubResource("Resource_w1bnp")])
+metadata/_custom_type_script = "uid://chx63enjgy4uc"

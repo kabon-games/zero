@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=16 format=3 uid="uid://jpacg5nclrpl"]
+
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="1_epvlv"]
+[ext_resource type="Texture2D" uid="uid://dtbgk2iuihjwi" path="res://Assets/Sprites/Tilesets/tree.png" id="1_hivrh"]
+[ext_resource type="Script" uid="uid://dfrvwi24thkjt" path="res://Scripts/Resources/simple_block_display.gd" id="1_mw4wf"]
+[ext_resource type="Resource" uid="uid://c8qembvdkdssv" path="res://Resources/ItemData/wood_item.tres" id="2_brahy"]
+[ext_resource type="Script" uid="uid://b16gdo7tlwaam" path="res://Scripts/Resources/drop_data.gd" id="2_yg0xc"]
+[ext_resource type="Resource" uid="uid://c6xppvt5aqovv" path="res://Resources/ItemData/tree_seed_item.tres" id="3_hivrh"]
+[ext_resource type="Script" uid="uid://c5v4grdv78ekk" path="res://Scripts/Resources/DropData/random_range_drop_data.gd" id="4_itlkd"]
+[ext_resource type="Script" uid="uid://mcb7gcx4jl3l" path="res://Scripts/Resources/DropData/multiple_drop_data.gd" id="6_777t3"]
+[ext_resource type="Resource" uid="uid://66hladtakd3q" path="res://Resources/ItemData/silk_worm_item.tres" id="7_itlkd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itlkd"]
+atlas = ExtResource("1_hivrh")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="Resource" id="Resource_yg0xc"]
+script = ExtResource("1_mw4wf")
+atlas = SubResource("AtlasTexture_itlkd")
+occluder = false
+collider = Vector4i(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[sub_resource type="Resource" id="Resource_ng0an"]
+script = ExtResource("4_itlkd")
+item = ExtResource("3_hivrh")
+min_nb = 0
+metadata/_custom_type_script = "uid://c5v4grdv78ekk"
+
+[sub_resource type="Resource" id="Resource_5t8ph"]
+script = ExtResource("4_itlkd")
+item = ExtResource("2_brahy")
+min_nb = 3
+max_nb = 10
+metadata/_custom_type_script = "uid://c5v4grdv78ekk"
+
+[sub_resource type="Resource" id="Resource_777t3"]
+script = ExtResource("4_itlkd")
+item = ExtResource("7_itlkd")
+min_nb = 0
+max_nb = 1
+metadata/_custom_type_script = "uid://c5v4grdv78ekk"
+
+[sub_resource type="Resource" id="Resource_xf427"]
+script = ExtResource("6_777t3")
+drops = Array[ExtResource("2_yg0xc")]([SubResource("Resource_ng0an"), SubResource("Resource_5t8ph"), SubResource("Resource_777t3")])
+metadata/_custom_type_script = "uid://mcb7gcx4jl3l"
+
+[resource]
+script = ExtResource("1_epvlv")
+uid = "TREE_ROOT"
+display = SubResource("Resource_yg0xc")
+break_level = 2
+tool_break = 2
+drop = SubResource("Resource_xf427")
+block_state_id = "TREE_ROOT"
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

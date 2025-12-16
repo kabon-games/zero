@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CraftRecipe" load_steps=9 format=3 uid="uid://nfm0mybbhwu6"]
+
+[ext_resource type="Script" uid="uid://bliswmt1b5dfj" path="res://Scripts/Utils/item_stack.gd" id="1_jof25"]
+[ext_resource type="Resource" uid="uid://c8qembvdkdssv" path="res://Resources/ItemData/wood_item.tres" id="2_dnqi1"]
+[ext_resource type="Resource" uid="uid://bpn68wsgnh0rc" path="res://Resources/ItemData/wood_pickaxe_item.tres" id="3_jof25"]
+[ext_resource type="Script" uid="uid://chx63enjgy4uc" path="res://Scripts/Resources/craft_recipe.gd" id="4_8ck82"]
+[ext_resource type="Script" uid="uid://dsbqg448ebulm" path="res://Scripts/Resources/craft_recipe_step.gd" id="5_7p8w8"]
+[ext_resource type="Script" uid="uid://df2xteu2idy4" path="res://Scripts/Resources/CraftRecipeSteps/sculpt_craft_recipe_step.gd" id="6_3dnx0"]
+
+[sub_resource type="Resource" id="Resource_w1bnp"]
+script = ExtResource("1_jof25")
+item = ExtResource("2_dnqi1")
+quantity = 5
+metadata/_custom_type_script = "uid://bliswmt1b5dfj"
+
+[sub_resource type="Resource" id="Resource_cmqjj"]
+script = ExtResource("6_3dnx0")
+schema = Array[int]([3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 24, 25, 26, 27, 28, 30, 31, 32, 33, 34])
+metadata/_custom_type_script = "uid://df2xteu2idy4"
+
+[resource]
+script = ExtResource("4_8ck82")
+uid = "WOOD_PICKAXE"
+result_item = ExtResource("3_jof25")
+cost = Array[ExtResource("1_jof25")]([SubResource("Resource_w1bnp")])
+steps = Array[ExtResource("5_7p8w8")]([SubResource("Resource_cmqjj")])
+metadata/_custom_type_script = "uid://chx63enjgy4uc"

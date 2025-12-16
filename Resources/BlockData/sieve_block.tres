@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=8 format=3 uid="uid://6tyswnk2e1ej"]
+
+[ext_resource type="Texture2D" uid="uid://dopcp5b5o0rss" path="res://Assets/Sprites/Tilesets/sieve.png" id="1_h55id"]
+[ext_resource type="Script" uid="uid://dfrvwi24thkjt" path="res://Scripts/Resources/simple_block_display.gd" id="2_sr6u0"]
+[ext_resource type="Resource" uid="uid://ccy6k8utiuqdc" path="res://Resources/ItemData/sieve_item.tres" id="3_h55id"]
+[ext_resource type="Script" uid="uid://xyx8b4duvref" path="res://Scripts/Resources/DropData/single_drop_data.gd" id="4_xhqwy"]
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="5_xihfq"]
+
+[sub_resource type="Resource" id="Resource_tli3g"]
+script = ExtResource("2_sr6u0")
+atlas = ExtResource("1_h55id")
+occluder = false
+collider = Vector4i(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[sub_resource type="Resource" id="Resource_prvyq"]
+script = ExtResource("4_xhqwy")
+item = ExtResource("3_h55id")
+metadata/_custom_type_script = "uid://xyx8b4duvref"
+
+[resource]
+script = ExtResource("5_xihfq")
+uid = "SIEVE"
+display = SubResource("Resource_tli3g")
+drop = SubResource("Resource_prvyq")
+block_state_id = "SIEVE"
+resistance = 1.5
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

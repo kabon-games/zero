@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj48rciby3lrx"]
+
+[ext_resource type="Script" uid="uid://dd0341yvl23sy" path="res://Scripts/Game/CraftMinigames/NailMinigame.gd" id="1_coy2o"]
+[ext_resource type="Texture2D" uid="uid://e6urkcrw4pjl" path="res://Assets/Sprites/hud/CraftMinigames/NailMinigame/background.png" id="1_ju56s"]
+[ext_resource type="Texture2D" uid="uid://43wbfbsl363n" path="res://Assets/Sprites/hud/CraftMinigames/NailMinigame/hammerl.png" id="2_coy2o"]
+[ext_resource type="Texture2D" uid="uid://cgg63y0dcp4c6" path="res://Assets/Sprites/hud/CraftMinigames/NailMinigame/nail.png" id="3_x0og5"]
+[ext_resource type="Texture2D" uid="uid://ndo2n7h6a46r" path="res://Assets/Sprites/hud/CraftMinigames/NailMinigame/foreground.png" id="4_53e7i"]
+
+[node name="NailMinigame" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_coy2o")
+
+[node name="Background" type="Sprite2D" parent="."]
+clip_children = 2
+position = Vector2(-75, -50)
+texture = ExtResource("1_ju56s")
+centered = false
+
+[node name="Hammer" type="Sprite2D" parent="Background"]
+position = Vector2(0, 8)
+texture = ExtResource("2_coy2o")
+centered = false
+
+[node name="Nail" type="Sprite2D" parent="Background"]
+position = Vector2(50, 68)
+texture = ExtResource("3_x0og5")
+
+[node name="Foreground" type="Sprite2D" parent="Background"]
+texture = ExtResource("4_53e7i")
+centered = false

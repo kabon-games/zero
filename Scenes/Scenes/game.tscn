@@ -1,0 +1,1099 @@
+[gd_scene load_steps=25 format=3 uid="uid://cyislboqcpeq"]
+
+[ext_resource type="Script" uid="uid://d2uea4v2e66re" path="res://Scripts/Scenes/game_manager.gd" id="1_b2wid"]
+[ext_resource type="Texture2D" uid="uid://e4ndxegt800y" path="res://Assets/Sprites/hud/item_bar.png" id="2_cgpuh"]
+[ext_resource type="Script" uid="uid://cal4dvt3p6y3f" path="res://Scripts/Game/hud_manager.gd" id="2_ewh85"]
+[ext_resource type="Texture2D" uid="uid://oq2yrtdnexnh" path="res://Assets/Sprites/hud/block_select.png" id="3_ewh85"]
+[ext_resource type="Script" uid="uid://intnbk30ijam" path="res://Scripts/Game/toolbar.gd" id="4_ma0eu"]
+[ext_resource type="Shader" uid="uid://0w3y1cx5tu8n" path="res://Resources/Shaders/select.gdshader" id="5_fp0jh"]
+[ext_resource type="Script" uid="uid://ctcwu8vdcstd0" path="res://Scripts/Game/craft_menu.gd" id="6_7c24e"]
+[ext_resource type="Texture2D" uid="uid://0c0qs1wcqqfe" path="res://Assets/Sprites/hud/craft_layout.png" id="7_dhp68"]
+[ext_resource type="PackedScene" uid="uid://bj48rciby3lrx" path="res://Scenes/Game/CraftMinigames/nail_minigame.tscn" id="8_7ky8l"]
+[ext_resource type="Script" uid="uid://dv2s2n1towe86" path="res://Scripts/Game/craft_table_menu.gd" id="8_eka3c"]
+[ext_resource type="PackedScene" uid="uid://dbvc355xfx5gu" path="res://Scenes/Game/CraftMinigames/sculpt_minigame.tscn" id="9_dhp68"]
+[ext_resource type="Script" uid="uid://cwh7ssox5krmv" path="res://Scripts/Game/Hud/backpack_menu.gd" id="9_nx2x4"]
+[ext_resource type="Texture2D" uid="uid://cx2qn7f3726q0" path="res://Assets/Sprites/hud/backpack_layout.png" id="9_xpvb3"]
+[ext_resource type="PackedScene" uid="uid://i3ebue31j55m" path="res://Scenes/Game/CraftMinigames/thread_minigame.tscn" id="11_vqcmq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6n6y"]
+shader = ExtResource("5_fp0jh")
+shader_parameter/active = true
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_to3p3"]
+shader = ExtResource("5_fp0jh")
+shader_parameter/active = false
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnvmc"]
+shader = ExtResource("5_fp0jh")
+shader_parameter/active = false
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6uht"]
+shader = ExtResource("5_fp0jh")
+shader_parameter/active = false
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yxt2j"]
+shader = ExtResource("5_fp0jh")
+shader_parameter/active = false
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bh2ub"]
+shader = ExtResource("5_fp0jh")
+shader_parameter/active = false
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ja8g"]
+shader = ExtResource("5_fp0jh")
+shader_parameter/active = false
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_teknw"]
+shader = ExtResource("5_fp0jh")
+shader_parameter/active = false
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8k4l"]
+shader = ExtResource("5_fp0jh")
+shader_parameter/active = false
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ag3dn"]
+shader = ExtResource("5_fp0jh")
+shader_parameter/active = false
+shader_parameter/hide = false
+shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_b2wid")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+light_mask = 0
+ignore_rotation = false
+zoom = Vector2(2, 2)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
+current = true
+
+[node name="background" type="CanvasLayer" parent="Camera2D"]
+layer = -3
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.02114346, 0.010808804, 0.08175639, 1)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("2_ewh85")
+
+[node name="ItemBarTexture" type="TextureRect" parent="HUD"]
+texture_filter = 1
+custom_minimum_size = Vector2(160, 16)
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 1.0
+anchor_right = 0.7
+anchor_bottom = 1.0
+offset_top = -78.08002
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_cgpuh")
+expand_mode = 5
+stretch_mode = 5
+script = ExtResource("4_ma0eu")
+metadata/_custom_type_script = "uid://intnbk30ijam"
+
+[node name="ItemBarHLayout" type="HBoxContainer" parent="HUD/ItemBarTexture"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="slot1" type="TextureRect" parent="HUD/ItemBarTexture/ItemBarHLayout"]
+z_index = 1
+material = SubResource("ShaderMaterial_o6n6y")
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="quantity" type="Label" parent="HUD/ItemBarTexture/ItemBarHLayout/slot1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="slot2" type="TextureRect" parent="HUD/ItemBarTexture/ItemBarHLayout"]
+z_index = 1
+material = SubResource("ShaderMaterial_to3p3")
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="quantity" type="Label" parent="HUD/ItemBarTexture/ItemBarHLayout/slot2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="slot3" type="TextureRect" parent="HUD/ItemBarTexture/ItemBarHLayout"]
+z_index = 1
+material = SubResource("ShaderMaterial_hnvmc")
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="quantity" type="Label" parent="HUD/ItemBarTexture/ItemBarHLayout/slot3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="slot4" type="TextureRect" parent="HUD/ItemBarTexture/ItemBarHLayout"]
+z_index = 1
+material = SubResource("ShaderMaterial_i6uht")
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="quantity" type="Label" parent="HUD/ItemBarTexture/ItemBarHLayout/slot4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="slot5" type="TextureRect" parent="HUD/ItemBarTexture/ItemBarHLayout"]
+z_index = 1
+material = SubResource("ShaderMaterial_yxt2j")
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="quantity" type="Label" parent="HUD/ItemBarTexture/ItemBarHLayout/slot5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="slot6" type="TextureRect" parent="HUD/ItemBarTexture/ItemBarHLayout"]
+z_index = 1
+material = SubResource("ShaderMaterial_bh2ub")
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="quantity" type="Label" parent="HUD/ItemBarTexture/ItemBarHLayout/slot6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="slot7" type="TextureRect" parent="HUD/ItemBarTexture/ItemBarHLayout"]
+z_index = 1
+material = SubResource("ShaderMaterial_6ja8g")
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="quantity" type="Label" parent="HUD/ItemBarTexture/ItemBarHLayout/slot7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="slot8" type="TextureRect" parent="HUD/ItemBarTexture/ItemBarHLayout"]
+z_index = 1
+material = SubResource("ShaderMaterial_teknw")
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="quantity" type="Label" parent="HUD/ItemBarTexture/ItemBarHLayout/slot8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="slot9" type="TextureRect" parent="HUD/ItemBarTexture/ItemBarHLayout"]
+z_index = 1
+material = SubResource("ShaderMaterial_r8k4l")
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="quantity" type="Label" parent="HUD/ItemBarTexture/ItemBarHLayout/slot9"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="slot10" type="TextureRect" parent="HUD/ItemBarTexture/ItemBarHLayout"]
+z_index = 1
+material = SubResource("ShaderMaterial_ag3dn")
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="quantity" type="Label" parent="HUD/ItemBarTexture/ItemBarHLayout/slot10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="CraftMenu" type="Control" parent="HUD"]
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_7c24e")
+
+[node name="Background" type="TextureRect" parent="HUD/CraftMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22000001
+anchor_top = 0.116000004
+anchor_right = 0.78000003
+anchor_bottom = 0.88400006
+offset_left = 0.10624695
+offset_top = 0.08200073
+offset_right = -0.10632324
+offset_bottom = -0.08203125
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_dhp68")
+stretch_mode = 5
+
+[node name="item" type="TextureRect" parent="HUD/CraftMenu/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42600003
+anchor_top = 0.335
+anchor_right = 0.574
+anchor_bottom = 0.528
+offset_left = -0.27685547
+offset_top = 0.0874939
+offset_right = 0.27685547
+offset_bottom = 0.070007324
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="RequiredContainer" type="HBoxContainer" parent="HUD/CraftMenu/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30200002
+anchor_top = 0.573
+anchor_right = 0.698
+anchor_bottom = 0.632
+offset_left = 0.19166565
+offset_top = 0.13250732
+offset_right = -0.19168091
+offset_bottom = 19.329987
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CraftTableMenu" type="Control" parent="HUD"]
+visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_eka3c")
+
+[node name="Background" type="TextureRect" parent="HUD/CraftTableMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22000001
+anchor_top = 0.116000004
+anchor_right = 0.78000003
+anchor_bottom = 0.88400006
+offset_left = 0.10624695
+offset_top = 0.08200073
+offset_right = -0.10632324
+offset_bottom = -0.08203125
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_dhp68")
+stretch_mode = 5
+
+[node name="item" type="TextureRect" parent="HUD/CraftTableMenu/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42600003
+anchor_top = 0.335
+anchor_right = 0.574
+anchor_bottom = 0.528
+offset_left = -0.27685547
+offset_top = 0.0874939
+offset_right = 0.27685547
+offset_bottom = 0.070007324
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="RequiredContainer" type="HBoxContainer" parent="HUD/CraftTableMenu/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30200002
+anchor_top = 0.573
+anchor_right = 0.698
+anchor_bottom = 0.632
+offset_left = 0.19166565
+offset_top = 0.13250732
+offset_right = -0.19168091
+offset_bottom = 19.329987
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="BackpackMenu" type="Control" parent="HUD"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_nx2x4")
+
+[node name="Background" type="TextureRect" parent="HUD/BackpackMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22000001
+anchor_top = 0.116000004
+anchor_right = 0.78000003
+anchor_bottom = 0.88400006
+offset_left = 0.10624695
+offset_top = 0.08200073
+offset_right = -0.10632324
+offset_bottom = -0.08203125
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_xpvb3")
+stretch_mode = 5
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HUD/BackpackMenu/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.22600001
+anchor_top = 0.26500002
+anchor_right = 0.78700006
+anchor_bottom = 0.74700004
+offset_left = -8.295364
+offset_top = -11.087509
+offset_right = 0.91152954
+offset_bottom = 6.1174927
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.5
+
+[node name="ItemsContainer" type="GridContainer" parent="HUD/BackpackMenu/Background/AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 6
+
+[node name="Control" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113000005
+anchor_top = 0.09900001
+anchor_right = 0.919
+anchor_bottom = 0.9
+offset_left = -0.0060100555
+offset_top = 0.028654575
+offset_right = 0.02199173
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control2" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+offset_left = 0.0019860268
+offset_top = 0.0015211105
+offset_right = 0.015987396
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control3" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+offset_left = 0.0019860268
+offset_top = 0.0015211105
+offset_right = 0.015987396
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control4" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+offset_left = 0.0019860268
+offset_top = 0.0015211105
+offset_right = 0.015987396
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control5" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+offset_left = 0.0019860268
+offset_top = 0.0015211105
+offset_right = 0.015987396
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control6" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.066
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+offset_left = -0.026003838
+offset_top = 0.0015211105
+offset_right = 0.015987396
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control7" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12900001
+anchor_top = 0.083000004
+anchor_right = 0.919
+anchor_bottom = 0.9
+offset_left = 0.0019898415
+offset_top = 0.020669937
+offset_right = 0.02199173
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control8" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.083000004
+anchor_right = 0.919
+anchor_bottom = 0.9
+offset_left = 0.0019860268
+offset_top = 0.020669937
+offset_right = 0.02199173
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control9" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control9"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+offset_left = 0.0019860268
+offset_top = 0.0015211105
+offset_right = 0.015987396
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control10" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.081
+anchor_top = 0.083000004
+anchor_right = 0.887
+anchor_bottom = 0.9
+offset_left = -0.021978855
+offset_top = 0.020669937
+offset_right = 0.0060195923
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control11" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control11"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.081
+anchor_top = 0.083000004
+anchor_right = 0.87100005
+anchor_bottom = 0.90000004
+offset_left = -0.021978855
+offset_top = 0.020669937
+offset_right = -0.0019798279
+offset_bottom = 0.01851654
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control12" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control12"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.066
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.90000004
+offset_left = -0.026003838
+offset_top = 0.0015211105
+offset_right = 0.015987396
+offset_bottom = 0.01851654
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control13" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control13"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113000005
+anchor_top = 0.083000004
+anchor_right = 0.919
+anchor_bottom = 0.874
+offset_left = -0.0060100555
+offset_top = 0.020669937
+offset_right = 0.02199173
+offset_bottom = -0.021327972
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control14" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control14"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.083000004
+anchor_right = 0.90300006
+anchor_bottom = 0.874
+offset_left = 0.7999902
+offset_top = 0.020669937
+offset_right = 0.013988495
+offset_bottom = -0.021327972
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control15" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control15"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.097
+anchor_top = 0.083000004
+anchor_right = 0.90300006
+anchor_bottom = 0.874
+offset_left = -0.013978958
+offset_top = 0.020669937
+offset_right = 0.014019012
+offset_bottom = -0.021327972
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control16" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control16"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.081
+anchor_top = 0.083000004
+anchor_right = 0.887
+anchor_bottom = 0.874
+offset_left = -0.021978855
+offset_top = 0.020669937
+offset_right = 0.0060195923
+offset_bottom = -0.021327972
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control17" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control17"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.081
+anchor_top = 0.083000004
+anchor_right = 0.87100005
+anchor_bottom = 0.874
+offset_left = -0.021978855
+offset_top = 0.020669937
+offset_right = -0.0019798279
+offset_bottom = -0.021327972
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control18" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control18"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.066
+anchor_top = 0.083000004
+anchor_right = 0.88500005
+anchor_bottom = 0.90000004
+offset_left = -0.026003838
+offset_top = 0.020669937
+offset_right = 0.01499176
+offset_bottom = 0.01851654
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control19" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control19"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113000005
+anchor_top = 0.068
+anchor_right = 0.919
+anchor_bottom = 0.8880001
+offset_left = -0.0060100555
+offset_top = 0.018645287
+offset_right = 0.02199173
+offset_bottom = -0.0013580322
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control20" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control20"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.052
+anchor_right = 0.919
+anchor_bottom = 0.9
+offset_left = 0.0019860268
+offset_top = -0.005354643
+offset_right = 0.02199173
+offset_bottom = 0.018520355
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control21" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control21"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.068
+anchor_right = 0.90000004
+anchor_bottom = 0.8880001
+offset_left = 0.0019860268
+offset_top = 0.018645287
+offset_right = 0.015983582
+offset_bottom = -0.0013580322
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control22" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control22"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.081
+anchor_top = 0.068
+anchor_right = 0.887
+anchor_bottom = 0.8880001
+offset_left = -0.021978855
+offset_top = 0.018645287
+offset_right = 0.0060195923
+offset_bottom = -0.0013580322
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control23" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control23"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.081
+anchor_top = 0.068
+anchor_right = 0.87100005
+anchor_bottom = 0.8880001
+offset_left = -0.021978855
+offset_top = 0.018645287
+offset_right = -0.0019798279
+offset_bottom = -0.0013580322
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Control24" type="Control" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemCell" type="TextureRect" parent="HUD/BackpackMenu/Background/AspectRatioContainer/ItemsContainer/Control24"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049000002
+anchor_top = 0.068
+anchor_right = 0.90000004
+anchor_bottom = 0.8880001
+offset_left = 0.010996103
+offset_top = 0.018645287
+offset_right = 0.015983582
+offset_bottom = -0.0013580322
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_ewh85")
+stretch_mode = 5
+
+[node name="Minigames" type="Node2D" parent="HUD"]
+
+[node name="NailMinigame" parent="HUD/Minigames" instance=ExtResource("8_7ky8l")]
+visible = false
+scale = Vector2(5, 5)
+
+[node name="SculptMinigame" parent="HUD/Minigames" instance=ExtResource("9_dhp68")]
+visible = false
+scale = Vector2(5, 5)
+
+[node name="ThreadMinigame" parent="HUD/Minigames" instance=ExtResource("11_vqcmq")]
+visible = false
+scale = Vector2(5, 5)

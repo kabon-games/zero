@@ -1,0 +1,173 @@
+[gd_scene load_steps=16 format=3 uid="uid://bx618eicjlbvv"]
+
+[ext_resource type="Script" uid="uid://d1dwyuaosmjxi" path="res://Scripts/Game/map.gd" id="1_3kx7a"]
+[ext_resource type="Script" uid="uid://dtqqstwvjhjkv" path="res://Scripts/Others/CollisionTileMap.gd" id="3_xkyam"]
+[ext_resource type="Script" uid="uid://oyj5vvnlj7ns" path="res://Scripts/Game/sun_light.gd" id="6_lcibo"]
+[ext_resource type="Shader" uid="uid://bnic8qvs41npi" path="res://Resources/Shaders/remove_white.gdshader" id="7_lu15k"]
+[ext_resource type="Shader" uid="uid://crhbqbx3ffukv" path="res://Resources/Shaders/draw_blur.gdshader" id="8_lu15k"]
+
+[sub_resource type="Gradient" id="Gradient_03adk"]
+colors = PackedColorArray(0.3882353, 0.8352941, 0.93333334, 0.6509804, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xkyam"]
+gradient = SubResource("Gradient_03adk")
+width = 1000
+height = 1000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.2, 0.8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eysf0"]
+shader = ExtResource("7_lu15k")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lu15k"]
+viewport_path = NodePath("SubViewport2")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_eysf0"]
+viewport_path = NodePath("shadow drawer")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwp0p"]
+shader = ExtResource("8_lu15k")
+
+[sub_resource type="Gradient" id="Gradient_xkyam"]
+colors = PackedColorArray(0.18550998, 0.41622168, 0.9999693, 1, 0.34117648, 0.16078432, 0.7058824, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lcibo"]
+gradient = SubResource("Gradient_xkyam")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xkyam"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 10, 10)
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+radial_velocity_min = -300.00003
+radial_velocity_max = -200.00002
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_lcibo")
+collision_mode = 2
+collision_use_scale = true
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lcibo"]
+particle_flag_disable_z = true
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 117.14998
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 3.0
+color = Color(0.48416126, 0.74733686, 0.8874403, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[node name="Map" type="Node2D"]
+visibility_layer = 49
+texture_filter = 1
+script = ExtResource("1_3kx7a")
+
+[node name="CollisionLayer" type="Node2D" parent="."]
+visibility_layer = 17
+position = Vector2(-8, -8)
+script = ExtResource("3_xkyam")
+metadata/_custom_type_script = "uid://dtqqstwvjhjkv"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = SubResource("GradientTexture2D_xkyam")
+
+[node name="occlusion_renderer" type="Sprite2D" parent="."]
+z_index = 5
+texture_filter = 1
+material = SubResource("ShaderMaterial_eysf0")
+scale = Vector2(16, 16)
+texture = SubResource("ViewportTexture_lu15k")
+
+[node name="shadow drawer" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+canvas_cull_mask = 4293918752
+size = Vector2i(256, 256)
+
+[node name="Camera2D" type="Camera2D" parent="shadow drawer"]
+light_mask = 32
+visibility_layer = 48
+zoom = Vector2(0.063, 0.063)
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="shadow drawer"]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="shadow drawer/CanvasLayer3"]
+light_mask = 32
+visibility_layer = 32
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasModulate" type="CanvasModulate" parent="shadow drawer/CanvasLayer3"]
+light_mask = 32
+visibility_layer = 32
+color = Color(0, 0, 0, 1)
+
+[node name="LightEnv" type="CanvasLayer" parent="shadow drawer"]
+layer = -10
+follow_viewport_enabled = true
+
+[node name="PointLight2D2" type="DirectionalLight2D" parent="shadow drawer/LightEnv"]
+light_mask = 32
+visibility_layer = 32
+position = Vector2(0, -402)
+rotation = -1.5707964
+range_layer_min = -10
+range_layer_max = -10
+range_item_cull_mask = 32
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter_smooth = 28.2
+shadow_item_cull_mask = 32
+script = ExtResource("6_lcibo")
+metadata/_custom_type_script = "uid://oyj5vvnlj7ns"
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport2"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_eysf0")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="SubViewport2"]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport2/CanvasLayer2"]
+z_index = 1
+material = SubResource("ShaderMaterial_cwp0p")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rain" type="GPUParticles2D" parent="."]
+z_as_relative = false
+emitting = false
+amount = 500
+sub_emitter = NodePath("GPUParticles2D2")
+lifetime = 30.630000000000003
+collision_base_size = 5.89
+visibility_rect = Rect2(-2000, -2000, 4000, 4000)
+process_material = SubResource("ParticleProcessMaterial_xkyam")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Rain"]
+emitting = false
+lifetime = 0.33
+one_shot = true
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_lcibo")

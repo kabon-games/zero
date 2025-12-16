@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BucketItemData" load_steps=5 format=3 uid="uid://ljlq23k5bhiw"]
+
+[ext_resource type="Resource" uid="uid://bbeqp1rxbpmdy" path="res://Resources/ItemData/wood_bucket_water_item.tres" id="1_fq22b"]
+[ext_resource type="Texture2D" uid="uid://cdncg4jxnmqij" path="res://Assets/Sprites/Items/items.png" id="2_fq22b"]
+[ext_resource type="Script" uid="uid://c5a61ng643qsd" path="res://Scripts/Resources/ItemData/bucket_item_data.gd" id="2_nk6tc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqe30"]
+atlas = ExtResource("2_fq22b")
+region = Rect2(0, 48, 16, 16)
+
+[resource]
+script = ExtResource("2_nk6tc")
+filled_item = ExtResource("1_fq22b")
+uid = "WOOD_BUCKET"
+sprite = SubResource("AtlasTexture_tqe30")
+stack = 1
+metadata/_custom_type_script = "uid://bbeidvvc27fi0"

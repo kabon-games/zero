@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FluidData" load_steps=3 format=3 uid="uid://beadfqiw0jyvt"]
+
+[ext_resource type="Texture2D" uid="uid://33bfe4ovttii" path="res://Assets/Sprites/Tilesets/water.png" id="1_m8lii"]
+[ext_resource type="Script" uid="uid://cdny1048r57ys" path="res://Scripts/Resources/fluid_data.gd" id="1_uu0h6"]
+
+[resource]
+script = ExtResource("1_uu0h6")
+uid = "WATER"
+atlas = ExtResource("1_m8lii")
+metadata/_custom_type_script = "uid://cdny1048r57ys"

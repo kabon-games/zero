@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=8 format=3 uid="uid://b43mnsmb053mf"]
+
+[ext_resource type="Texture2D" uid="uid://dtbgk2iuihjwi" path="res://Assets/Sprites/Tilesets/tree.png" id="1_6cm1s"]
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="2_6cm1s"]
+[ext_resource type="Shader" uid="uid://dein87le0bwwb" path="res://Resources/Shaders/leaves_shader.gdshader" id="2_vav5v"]
+[ext_resource type="Script" uid="uid://dyfu72v63j4w2" path="res://Scripts/Resources/leaves_block_display.gd" id="3_oodqf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfdij"]
+atlas = ExtResource("1_6cm1s")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n73f4"]
+shader = ExtResource("2_vav5v")
+shader_parameter/value = 0.0
+
+[sub_resource type="Resource" id="Resource_63lng"]
+script = ExtResource("3_oodqf")
+material = SubResource("ShaderMaterial_n73f4")
+atlas = SubResource("AtlasTexture_mfdij")
+occluder = false
+collider = Vector4i(0, 0, 0, 0)
+metadata/_custom_type_script = "uid://dyfu72v63j4w2"
+
+[resource]
+script = ExtResource("2_6cm1s")
+uid = "TREE_LEAVES_2"
+display = SubResource("Resource_63lng")
+break_level = 0
+block_state_id = "LEAVES"
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="CraftRecipe" load_steps=13 format=3 uid="uid://cgk671vwf0nm3"]
+
+[ext_resource type="Script" uid="uid://bliswmt1b5dfj" path="res://Scripts/Utils/item_stack.gd" id="1_y47nb"]
+[ext_resource type="Resource" uid="uid://c8qembvdkdssv" path="res://Resources/ItemData/wood_item.tres" id="2_jyua1"]
+[ext_resource type="Resource" uid="uid://c6xuuu45rddu1" path="res://Resources/ItemData/thread_item.tres" id="3_6soqu"]
+[ext_resource type="Script" uid="uid://chx63enjgy4uc" path="res://Scripts/Resources/craft_recipe.gd" id="4_05jh6"]
+[ext_resource type="Resource" uid="uid://ccy6k8utiuqdc" path="res://Resources/ItemData/sieve_item.tres" id="4_oeyds"]
+[ext_resource type="Script" uid="uid://dsbqg448ebulm" path="res://Scripts/Resources/craft_recipe_step.gd" id="5_oeyds"]
+[ext_resource type="Script" uid="uid://2o0hfk5khj0t" path="res://Scripts/Resources/CraftRecipeSteps/nail_craft_recipe_step.gd" id="6_aqwd2"]
+[ext_resource type="Script" uid="uid://2qwd6i2epnhn" path="res://Scripts/Resources/CraftRecipeSteps/thread_craft_recipe_step.gd" id="8_aqwd2"]
+
+[sub_resource type="Resource" id="Resource_w1bnp"]
+script = ExtResource("1_y47nb")
+item = ExtResource("2_jyua1")
+quantity = 10
+metadata/_custom_type_script = "uid://bliswmt1b5dfj"
+
+[sub_resource type="Resource" id="Resource_y2mru"]
+script = ExtResource("1_y47nb")
+item = ExtResource("3_6soqu")
+quantity = 5
+metadata/_custom_type_script = "uid://bliswmt1b5dfj"
+
+[sub_resource type="Resource" id="Resource_dimx6"]
+script = ExtResource("6_aqwd2")
+speed = 70.0
+metadata/_custom_type_script = "uid://2o0hfk5khj0t"
+
+[sub_resource type="Resource" id="Resource_e7cfj"]
+script = ExtResource("8_aqwd2")
+metadata/_custom_type_script = "uid://2qwd6i2epnhn"
+
+[resource]
+script = ExtResource("4_05jh6")
+uid = "SIEVE"
+result_item = ExtResource("4_oeyds")
+cost = Array[ExtResource("1_y47nb")]([SubResource("Resource_w1bnp"), SubResource("Resource_y2mru")])
+steps = Array[ExtResource("5_oeyds")]([SubResource("Resource_dimx6"), SubResource("Resource_e7cfj")])
+metadata/_custom_type_script = "uid://chx63enjgy4uc"

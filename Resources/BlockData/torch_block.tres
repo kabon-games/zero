@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=9 format=3 uid="uid://dsdim67dvr4i7"]
+
+[ext_resource type="Script" uid="uid://dfrvwi24thkjt" path="res://Scripts/Resources/simple_block_display.gd" id="1_uqsyh"]
+[ext_resource type="Texture2D" uid="uid://db0npa4vsklw7" path="res://Assets/Sprites/Tilesets/torch.png" id="1_wkvxs"]
+[ext_resource type="Resource" uid="uid://b28et47fgmsgb" path="res://Resources/ItemData/torch_item.tres" id="2_uqsyh"]
+[ext_resource type="Script" uid="uid://xyx8b4duvref" path="res://Scripts/Resources/DropData/single_drop_data.gd" id="3_3x045"]
+[ext_resource type="Script" uid="uid://ddo5codrj7kjy" path="res://Scripts/Resources/block_data.gd" id="4_yujdh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x045"]
+atlas = ExtResource("1_wkvxs")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Resource" id="Resource_6rc43"]
+script = ExtResource("1_uqsyh")
+atlas = SubResource("AtlasTexture_3x045")
+occluder = false
+collider = Vector4i(0, 0, 0, 0)
+emission = 1
+metadata/_custom_type_script = "uid://dfrvwi24thkjt"
+
+[sub_resource type="Resource" id="Resource_jhy60"]
+script = ExtResource("3_3x045")
+item = ExtResource("2_uqsyh")
+metadata/_custom_type_script = "uid://xyx8b4duvref"
+
+[resource]
+script = ExtResource("4_yujdh")
+uid = "TORCH"
+display = SubResource("Resource_6rc43")
+drop = SubResource("Resource_jhy60")
+block_state_id = "TORCH"
+resistance = 0.5
+metadata/_custom_type_script = "uid://ddo5codrj7kjy"
