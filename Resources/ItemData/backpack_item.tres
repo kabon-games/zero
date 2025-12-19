@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BucketItemData" load_steps=4 format=3 uid="uid://j0ghjdsmg18p"]
+[gd_resource type="Resource" script_class="BackPackItemData" load_steps=4 format=3 uid="uid://j0ghjdsmg18p"]
 
 [ext_resource type="Script" uid="uid://77xjpgawowhq" path="res://Scripts/Resources/ItemData/backpack_item_data.gd" id="1_dvsva"]
 [ext_resource type="Texture2D" uid="uid://cdncg4jxnmqij" path="res://Assets/Sprites/Items/items.png" id="2_rjsug"]

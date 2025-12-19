@@ -19,6 +19,8 @@ var SILK_WORM_ITEM = load("res://Resources/ItemData/silk_worm_item.tres")
 var THREAD_ITEM = load("res://Resources/ItemData/thread_item.tres")
 var SIEVE_ITEM = load("res://Resources/ItemData/sieve_item.tres")
 var BACKPACK_ITEM = load("res://Resources/ItemData/backpack_item.tres")
+var PEBBLE_ITEM = load("res://Resources/ItemData/pebble_item.tres")
+var WHEAT_SEED_ITEM = load("res://Resources/ItemData/wheat_seed_item.tres")
 
 var items: Array[ItemData] = []
 
@@ -51,3 +53,5 @@ func _ready() -> void:
 	register_item(THREAD_ITEM)
 	register_item(SIEVE_ITEM)
 	register_item(BACKPACK_ITEM)
+	register_item(PEBBLE_ITEM)
+	register_item(WHEAT_SEED_ITEM)

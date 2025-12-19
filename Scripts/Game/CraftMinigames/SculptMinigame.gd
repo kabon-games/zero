@@ -30,10 +30,10 @@ func start(schema: Array[int]):
 	deleted.clear()
 	wait_before_start = 0.5
 	for block in blocks:
-		block.modulate = Color.WHITE
+		block.material.set_shader_parameter("modulate", Color.from_rgba8(0,0,0,0))
 		block.material.set_shader_parameter("hide", false)
 	for id in _schema:
-		blocks[id].modulate = Color.RED
+		blocks[id].material.set_shader_parameter("modulate", Color.from_rgba8(255,0,0,255))
 	select(0)
 
 func controls():

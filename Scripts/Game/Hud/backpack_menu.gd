@@ -18,6 +18,7 @@ func select(value: int):
 		mat.set_shader_parameter("active", false)
 		
 	selected = value
+		
 	
 	if selected < item_cells.size():
 		var cell = item_cells[selected]
@@ -35,7 +36,6 @@ func update_slot(idx: int):
 func display(state: BackpackItemState, inv: Inventory):
 	self.visible = true
 	GameData.game_manager.hud.menu_toggled.emit(true)
-	selected = 0
 	backpack = state
 	inventory = inv
 	var i: int = 0
@@ -78,13 +78,32 @@ func move():
 
 func controls():
 	if Input.is_action_just_pressed("ui_right"):
-		select(selected + 1)
+		var new_select = selected + 1
+		if new_select > item_cells.size() + 9 :
+			new_select = 0
+		select(new_select)
 	if Input.is_action_just_pressed("ui_left"):
-		select(selected - 1)
+		var new_select = selected - 1
+		if new_select < 0:
+			new_select = item_cells.size() + 9
+		select(new_select)
+	if Input.is_action_just_pressed("ui_up"):
+		var new_select = selected - 6
+		if selected >= item_cells.size():
+			new_select = 23
+		if new_select < 0:
+			new_select = selected + 6 * 4
+		select(new_select)
+	if Input.is_action_just_pressed("ui_down"):
+		var new_select = selected + 6
+		if new_select >= item_cells.size() + 6:
+			new_select = 0
+		select(new_select)
 	if Input.is_action_just_pressed("ui_accept"):
 		move()
 	if Input.is_action_just_pressed("use_map"):
 		self.visible = false
+		select(0)
 		GameData.game_manager.hud.menu_toggled.emit(false)
 		GameData.game_manager.hud.toolbar.unoverride_select()
 

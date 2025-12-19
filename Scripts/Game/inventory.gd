@@ -13,7 +13,6 @@ func generate_default_inventory():
 	clear()
 	update_slot(0, ItemStack.create(Items.TREE_SEED_ITEM, 5, null))
 	update_slot(9, ItemStack.create(Items.WOOD_AXE_ITEM, 1, null))
-	update_slot(1, ItemStack.create(Items.BACKPACK_ITEM, 1, null))
 
 func get_item_quantity(item: ItemData) -> int:
 	var quantity: int = 0

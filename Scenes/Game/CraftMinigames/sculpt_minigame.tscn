@@ -11,12 +11,16 @@ shader = ExtResource("3_c1uw4")
 shader_parameter/active = true
 shader_parameter/hide = false
 shader_parameter/color = Vector3(1, 1, 0.2)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c1uw4"]
 shader = ExtResource("3_c1uw4")
 shader_parameter/active = false
 shader_parameter/hide = false
 shader_parameter/color = Vector3(1, 1, 1)
+shader_parameter/size = 0.1
+shader_parameter/modulate = Vector4(0, 0, 0, 0)
 
 [node name="SculptMinigame" type="Node2D"]
 texture_filter = 1
